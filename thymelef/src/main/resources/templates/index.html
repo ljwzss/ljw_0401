@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>欢迎老铁</h1>
+    <div th:text="${tName}"th:value="${tName}"></div>
+    <!--循环-->
+    <table>
+        <!--strs 代表集合中的每一个对象-->
+        <tr th:each="strs ,stat:${lists}">
+            <td th:text="${strs}"></td>
+            <!--获取到集合下标-->
+            <td th:text="${stat.index}"></td>
+        </tr>
+    </table>
+
+    <h1>判断</h1>
+    <div th:text="${age}>=18?'成年了':'好好上学'"></div>
+    <div th:text="${age}>='18'?'成年了':'好好上学'"></div>
+    <h1>if判断</h1>
+    <span th:if="${age}>=18" th:text="赚钱"></span>
+    <span th:if="${age}>='18'" th:text="赚钱"></span>
+
+    <h1>session</h1>
+    <span th:text="${session.sex}"></span>
+
+    <!--就是你再创建一个界面  那个界面里边放你想要的内容-->
+    <h1>引用内嵌页 include</h1>
+    <div th:include="innerHtml"></div>
+    <!--th:utext :解析样式-->
+    <h1><div th:utext="${green}"></div></h1>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

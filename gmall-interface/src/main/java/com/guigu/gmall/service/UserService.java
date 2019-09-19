@@ -20,4 +20,9 @@ public interface UserService {
     void delUser(UserInfo userInfo);
     //查询单个
     UserInfo getUseInfoById(String id);
+
+    //登录
+    UserInfo login(UserInfo userInfo);
+    //认证登录
+    UserInfo verify(String userId);
 }

@@ -5,6 +5,8 @@ import com.alibaba.fastjson.JSON;
 import com.guigu.gmall.bean.SkuImage;
 import com.guigu.gmall.bean.SkuInfo;
 import com.guigu.gmall.bean.SpuSaleAttr;
+import com.guigu.gmall.config.LoginRequire;
+import com.guigu.gmall.service.ListService;
 import com.guigu.gmall.service.ManageService;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
@@ -22,7 +24,12 @@ public class ItemController {
     @Reference
     ManageService manageService;
 
+   @Reference
+   private  ListService listService;
+
+
     @RequestMapping("{skuId}.html")
+    @LoginRequire(autoRedirect = true) //代表访问商品详情页必须登录
     public String getItem(@PathVariable(value = "skuId") String skuId, HttpServletRequest request){
         //调用服务层
 
@@ -45,6 +52,8 @@ public class ItemController {
 
         //保存skuInfo对象数据
        request.setAttribute("skuInfo",skuInfo);
+        //调用热度排名
+        listService.incrHotScore(skuId);
         return "item";
     }
 

@@ -48,4 +48,7 @@ public class UserController {
     public UserInfo getUserInfoById(String id){
        return userService.getUseInfoById(id);
     }
+
+    //认证方式
+
 }

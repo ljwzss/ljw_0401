@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 import java.io.Serializable;
 
 @Data
@@ -18,4 +19,9 @@ public class BaseAttrValue implements Serializable {
     private String valueName;
     @Column
     private String attrId;
+
+    //记录urlParam用来记录当用户点击面包屑以后的URL参数
+
+    @Transient
+    private String urlParam;
 }

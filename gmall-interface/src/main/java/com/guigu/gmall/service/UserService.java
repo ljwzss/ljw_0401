@@ -2,6 +2,7 @@ package com.guigu.gmall.service;
 
 
 
+import com.guigu.gmall.bean.UserAddress;
 import com.guigu.gmall.bean.UserInfo;
 
 import java.util.List;
@@ -25,4 +26,10 @@ public interface UserService {
     UserInfo login(UserInfo userInfo);
     //认证登录
     UserInfo verify(String userId);
+
+
+    //订单类
+    public List<UserAddress> getUserAddressByUserId(String userId);
+
+    List<UserAddress> getUserAddressByUserId(UserAddress userAddress);
 }

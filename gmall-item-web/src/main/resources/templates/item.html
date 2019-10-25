@@ -229,6 +229,10 @@
 						  
 						<div class="box-attr-3">
 						<br/>
+							<!--存储json字符串-->
+							<!--<input type="hidden" id="valuesSku" th:value="${valuesSkuJson}"/>-->
+							<!--存储当前商品-->
+							<!--<input type="hidden" id="" th:value="${skuInfo.id}"/>-->
 							<div class="box-attr-2 clear" th:each="spuSaleAttr:${spuSaleAttrList}" >
 								<dl>
 									<dt th:text="${spuSaleAttr.saleAttrName}">选择颜色</dt>
@@ -273,9 +277,9 @@
 						<div class="box-btns clear">
 							<div class="box-btns-one">
 								<form id="itemForm" action="http://cart.gmall.com/addToCart" method="post">
-								<input type="text" name="num" id="" value="1" />
+								<input type="text" name="skuNum" id="" value="1" />
 								<input id="valuesSku" type="hidden" th:value="${valuesSkuJson}"/>
-								<input id="skuId" type="hidden" th:value="${skuInfo.id}"/>
+								<input name="skuId" type="hidden" th:value="${skuInfo.id}"/>
 
 								<div class="box-btns-one1">
 

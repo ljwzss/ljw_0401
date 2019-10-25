@@ -7,8 +7,10 @@ package com.guigu.gmall.usermanage.service.impl;
 import com.alibaba.dubbo.config.annotation.Service;
 import com.alibaba.fastjson.JSON;
 import com.guigu.gmall.RedisUtil;
+import com.guigu.gmall.bean.UserAddress;
 import com.guigu.gmall.bean.UserInfo;
 import com.guigu.gmall.service.UserService;
+import com.guigu.gmall.usermanage.mapper.UserAddressMapper;
 import com.guigu.gmall.usermanage.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -26,6 +28,8 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     RedisUtil redisUtil;
+    @Autowired
+    UserAddressMapper userAddressMapper;
 
     //登录
     public String userKey_prefix="user:";
@@ -68,6 +72,8 @@ public class UserServiceImpl implements UserService {
 
         return userMapper.selectByPrimaryKey(id);
     }
+
+
 
     @Override
     public UserInfo login(UserInfo userInfo) {
@@ -114,6 +120,23 @@ public class UserServiceImpl implements UserService {
         jedis.close();
         return userInfo;
     }
+
+    //订单类
+    @Override
+    public List<UserAddress> getUserAddressByUserId(String userId) {
+        Example example = new Example(UserAddress.class);
+        example.createCriteria().andEqualTo("userId",userId);
+
+        return userAddressMapper.selectByExample(example);
+    }
+
+    @Override
+    public List<UserAddress> getUserAddressByUserId(UserAddress userAddress) {
+
+        return userAddressMapper.select(userAddress);
+    }
+
+
 }
 
 

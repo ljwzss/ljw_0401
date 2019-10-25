@@ -29,7 +29,7 @@ public class ItemController {
 
 
     @RequestMapping("{skuId}.html")
-    @LoginRequire(autoRedirect = true) //代表访问商品详情页必须登录
+    //@LoginRequire(autoRedirect = true) //代表访问商品详情页必须登录
     public String getItem(@PathVariable(value = "skuId") String skuId, HttpServletRequest request){
         //调用服务层
 
